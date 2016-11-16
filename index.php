@@ -9,9 +9,25 @@
 </head>
 <body>
 	<header>
-		<h1>The iterative blog</h1>	
+		<h1>The Iterative Blog</h1>	
 		<p>This is a blog about the development of this blog.</p>
 	</header>
+	<article>
+		<header>
+			<h2>An update on the last post</h2>
+			<span>Published <time>2016-11-16 19:54</time>.</span>
+		</header>
+		<div>
+			<p>I forgot to mention some things in the last post, that I think are important to this whole picture.</p>
+			<p>Since this is <i>The Iterative Blog</i>, I will keep iterating on both blog posts, and the layout, structure and everything in between. I will try to improve on everything that I can improve on. To do this I will use different tools, such as the W3C HTML Validator, PageSpeed, and other tools to measure and quantify what there is to be improved, and what works well.</p>
+			<p>In the beginning I will not include anything that isn't strictly necessary, no jQuery, no Foundation or Bootstrap, no Googly Analytics, nothing. However, some of these might come in handy later on, and I might use them if I deem them to be a net positive.</p>
+			<p>Since the last post I ran the W3C Validator and have changed some tiny things that it did not agree on. This is to avoid all of the problems that improper markup can have on the page. If the goal is to have a great product, every part of it must be great, not just the visual, the content or the backend.</p>
+			<p>This is the first blog that I have some kind of goal with, I've had other before but none of them save any kind of long lived commitment, so this time I might be able to keep this up a little longer. It will also be a great way to improve my written english.</p>
+		</div>
+		<footer>
+			<p>Time to write: 12 minutes.</p>
+		</footer>
+	</article>
 	<article>
 		<header>
 			<h2>Baby steps towards something new</h2>
@@ -31,7 +47,7 @@
 			<p>I hope that I do not end up with bloat, slow loading or anything other negative.</p>
 		</div>
 		<footer>
-			<p>Time to write: <time>28 minutes</time>.</p>
+			<p>Time to write: 28 minutes.</p>
 		</footer>
 	</article>
 	<footer>
