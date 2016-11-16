@@ -10,12 +10,28 @@
 <body>
 	<header>
 		<h1>The Iterative Blog</h1>	
-		<p>This is a blog about the development of this blog.</p>
+		<p>This is a blog about the development of this blog, among other things.</p>
 	</header>
+	<article>
+		<header>
+			<h2>Added a changes since last post "tag"</h2>
+			<span>Published <time>2016-11-16 20:08</time>.</span>
+			<span>Changes since last post: miniscule.</span>
+		</header>
+		<div>
+			<p>My intention is for all changes to be documented here. This means that even small or even miniscule changes will end up in a post, in it's own or in one documenting several such changes.</p>
+			<p>With all changes being documented, there might be a need for them to be categorized some way. If you're only interested in the large ones, then a miniscule change might not be of interest. That's why I added the "Changes since last post" "tag" to the header of every post. It is a very subjective categorization, not based on anything other than what I think that it should be called, subjectivity is all around us, embrace it.</p>
+			<p>I also changed the blog header, I added the "among other things" part. Sometime in the future, when it is necessary, this header might include more things, but this will suffice for now.</p>
+		</div>
+		<footer>
+			<p>Time to write: 4 minutes.</p>
+		</footer>
+	</article>
 	<article>
 		<header>
 			<h2>An update on the last post</h2>
 			<span>Published <time>2016-11-16 19:54</time>.</span>
+			<span>Changes since last post: small.</span>
 		</header>
 		<div>
 			<p>I forgot to mention some things in the last post, that I think are important to this whole picture.</p>
@@ -32,6 +48,7 @@
 		<header>
 			<h2>Baby steps towards something new</h2>
 			<span>Published <time>2016-11-16 19:22</time>.</span>
+			<span>Changes since last post: groundbreaking.</span>
 		</header>
 		<div>
 			<p>The intention with this blog is to document the development of a platform, or something of that effect, for blogging. 
