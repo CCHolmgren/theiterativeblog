@@ -20,7 +20,8 @@ function renderArticle($article){
 		<p>Time to write: <?= get($article["write_time"], "0 minutes"); ?>.</p>
 	</footer>
 </article>
-<?php }
+<?php 
+}
 function getArticles(){
 	$articles = [];
 	$prefix = "articles/";
@@ -65,6 +66,7 @@ if(isPost() && isCorrectPassword($_POST["password"])){
 			<input type="submit">
 		</form>
 	</header>
+	
 	<?php foreach(getArticles() as $article){
 		renderArticle($article);
 	}?>
