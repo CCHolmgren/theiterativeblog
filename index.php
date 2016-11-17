@@ -50,7 +50,7 @@ if(isPost() && isCorrectPassword($_POST["password"])){
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Test</title>
+	<title>The Iterative Blog</title>
 </head>
 <body>
 	<header>
