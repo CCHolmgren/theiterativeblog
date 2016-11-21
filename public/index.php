@@ -3,7 +3,7 @@ function get(&$index, $default = ""){
 	return $index ?: $default;
 }
 function isCorrectPassword($password){
-	return password_verify($password, file_get_contents(".password"));
+	return password_verify($password, file_get_contents("../.password"));
 }
 function renderArticle($name, $article){
 	$article = json_decode($article, true); 
