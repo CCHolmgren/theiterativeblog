@@ -11,7 +11,7 @@
 	<header>
 		<h1>The Iterative Blog</h1>	
 		<p>This is a blog about the development of this blog, among other things.</p>
-		<form method="post">
+		<form method="post" id="new-article">
 			<input type="hidden" value="<?= $chosenId; ?>" name="chosenid">
 			<input type="password" name="password" placeholder="Password">
 			<input type="text" name="data[title]" placeholder="Title" value="<?= $chosenData["title"]; ?>">
@@ -31,5 +31,6 @@
 		<p>Want the code for this project? Please visit my Github-page at <a href="https://github.com/CCHolmgren/theiterativeblog">ccholmgren/theiterativeblog</a>.</p>
 		<p>Want to know more about me? You can find my personal page at <a href="http://christofferholmgren.se/">http://christofferholmgren.se/</a>. It might be a little outdated, but it provides a decent overview over what I have accomplished so far!</p>
 	</footer>
+	<script src="/js/app.js"></script>
 </body>
 </html>
