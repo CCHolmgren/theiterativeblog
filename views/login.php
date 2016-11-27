@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Iterative Blog</title>
-	<link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/normalize.min.css">
 	<link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
