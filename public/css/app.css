@@ -1,0 +1,85 @@
+body {
+    font-size: 16px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+p,
+li,
+dl {
+    line-height: 1.6;
+}
+h1 {
+    font-size: 2.2rem;
+}
+h2 {
+    font-size: 2rem;
+}
+h3 {
+    font-size: 1.8rem;
+}
+h4 {
+    font-size: 1.6rem
+}
+h5 {
+    font-size: 1.4rem;
+}
+h6 {
+    font-size: 1.2rem;
+}
+dd:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+input[type=text],
+input[type=password], 
+textarea {
+    margin-bottom: 1rem;
+    width: 100%;
+    padding: 0.25rem;  
+}
+input[type=submit] {
+    margin-bottom: 1rem;
+    background-color: white;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    padding: 0.5rem;
+}
+input[type=submit]:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.readable-width {
+    max-width: 40em;
+}
+
+.block-centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.lower-focus {
+    color: #666;
+}
+@media screen and (min-width: 40em){
+    body {
+        max-width: 64em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .sidebar {
+        float: left;
+        width: 25%;
+    }
+    main {
+        float: right;
+        width: 70%;
+    }
+    article {
+        float: left;
+    }
+}

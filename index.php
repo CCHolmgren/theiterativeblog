@@ -35,7 +35,7 @@ function handleDefaultRoute(){
 		$chosen = $articles[$edit];
 		$chosenData = $chosen;
 	}
-	return view("views/layouts/base.php", ['articles' => $articles, 'chosenData' => $chosenData, 'chosenId' => $chosenId]);
+	return view("layouts/base", ['articles' => $articles, 'chosenData' => $chosenData, 'chosenId' => $chosenId]);
 }
 function handleNewArticle(){
 	if(Session::isLoggedIn()){
@@ -45,13 +45,29 @@ function handleNewArticle(){
 }
 $routes = [
 	"/login" => function(){
-		Session::login();
+		if(Request::getMethod() == "POST"){
+			Session::login();
+		}
+		return view("login");
 	},
 	"/logout" => function(){
 		Session::logout();
 	},
 	"/new-article" => function(){
-		handleNewArticle();
+		if(!Session::isLoggedIn()){
+			Route::redirectToRoot();
+		}
+		if(Request::getMethod() == "POST"){
+			handleNewArticle();
+		}
+		$articles = [];
+		$chosenId = "";
+		$chosenData = new stdClass();
+		$vals = ['title' => '','published' => date('Y-m-d H:i'), 'changes' => 'miniscule', 'write_time' => '0 minutes', 'content' => ''];
+		foreach($vals as $key => $val){
+			$chosenData->$key = $val;
+		}
+		return view("new-article", ['articles' => $articles, 'chosenData' => $chosenData, 'chosenId' => $chosenId]);
 	},
 	"*" => "handleDefaultRoute"
 ];

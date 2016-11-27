@@ -1,4 +1,4 @@
-<article>
+<article class="readable-width block-centered">
 	<header>
 		<h2><?= $article->title; ?></h2>
 		<span>Published <time><?= $article->published; ?></time>.</span>

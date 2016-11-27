@@ -10,8 +10,8 @@ function isCorrectUsername($username){
 function isCorrectPassword($password){
 	return password_verify($password, file_get_contents(".password"));
 }
-function view($route, $variables){
+function view($route, $variables = []){
 	extract($variables);
-	include($route);
+	include("views/" . $route . ".php");
 	exit;
 }

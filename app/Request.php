@@ -14,4 +14,7 @@ class Request {
 		}
 		return $_GET;
 	}
+	static function getMethod(){
+		return $_SERVER["REQUEST_METHOD"];
+	}
 }
