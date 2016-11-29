@@ -10,10 +10,9 @@ class Route {
 		foreach($routes as $route => $handler){
 			$route = str_replace("/", "\/", $route);
 			$route = str_replace("*", "(.*)", $route);
-			$route = "/" . $route . "/";
-			if(preg_match($route, $_SERVER["REQUEST_URI"])){
-				$handler();
-				exit;
+			$route = "/^" . $route . "$/";
+			if(preg_match($route, $_SERVER["REQUEST_URI"], $matches)){
+				return $handler($matches);
 			}
 		}
 	}

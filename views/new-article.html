@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if (Session.isLoggedIn()) %}
+		<form method="post" id="new-article" action="/new-article">
+			<input type="hidden" value="{{ chosenId }}" name="chosenid">
+			<div>
+			<input type="text" name="data[title]" placeholder="Title" value="{{ chosenData.get('title') }}">
+			</div>
+			<div>
+			<input type="text" name="data[published]" placeholder="Published" value="{{ chosenData.get('published') }}">
+			</div>
+			<div>
+			<input type="text" name="data[changes]" placeholder="Changes" value="{{ chosenData.get('changes') }}">
+			</div>
+			<div>
+			<input type="text" name="data[write_time]" placeholder="Time to write" value="{{ chosenData.get('write_time') }}">
+			</div>
+			<div>
+				<textarea id="markdown" name="data[markdown]" rows="10">{{ chosenData.get('markdown') }}</textarea>
+			</div>
+			<div id="target">
+			</div>
+			<div>
+			<textarea name="data[content]" id="real" placeholder="Content" rows="10">{{ chosenData.get('content') }}</textarea>
+			</div>
+			<a href="/">Stop editing</a>
+			<input type="submit">
+		</form>
+		<form method="post" action="/logout">
+			<input type="submit" value="Logout">
+		</form>
+	{% endif %}
+{% endblock %}
+
+{% block scripts %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.5.0/showdown.min.js"></script>
+	<script>
+		(function(){
+			function convert() {
+				var html = converter.makeHtml(document.getElementById("markdown").value);
+				document.getElementById("real").innerHTML = html;
+				document.getElementById("target").innerHTML = html;
+			}
+			var converter = new showdown.Converter();
+			document.getElementById("markdown").addEventListener("keyup", convert);
+			convert();
+		}())
+	</script>
+{% endblock scripts %}

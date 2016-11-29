@@ -1,13 +1,11 @@
 <?php
 
-chdir(__DIR__);
-
 use App\Session;
 use App\Route;
 use App\Models\Article;
 use App\Request;
 
-include("./helpers.php");
+chdir(__DIR__);
 
 spl_autoload_register(function($name){
 	$name = str_replace("\\", '/', $name);
@@ -19,56 +17,86 @@ spl_autoload_register(function($name){
 	}
 });
 
-Session::start();
+include("./helpers.php");
 
-function handleDefaultRoute(){
-	$articles = Article::all();
-	$chosenId = "";
-	$chosenData = new stdClass();
-	$vals = ['title' => '','published' => date('Y-m-d H:i'), 'changes' => 'miniscule', 'write_time' => '0 minutes', 'content' => ''];
-	foreach($vals as $key => $val){
-		$chosenData->$key = $val;
-	}
-	if(isset($_GET["edit"])){
-		$edit = Request::get("edit");
-		$chosenId = $edit;
-		$chosen = $articles[$edit];
-		$chosenData = $chosen;
-	}
-	return view("layouts/base", ['articles' => $articles, 'chosenData' => $chosenData, 'chosenId' => $chosenId]);
-}
-function handleNewArticle(){
-	if(Session::isLoggedIn()){
-		Article::save(Request::post("data"), Request::post("chosenid"));
-	}
-	Route::redirectToRoot();
-}
+Session::start();
 $routes = [
 	"/login" => function(){
+		if(Session::isLoggedIn()){
+			Route::redirectToRoot();
+		}
 		if(Request::getMethod() == "POST"){
 			Session::login();
 		}
-		return view("login");
+		return view("login.html");
 	},
 	"/logout" => function(){
 		Session::logout();
+	},
+	"/delete/(?P<id>\d+)" => function($matches){
+		if(!Session::isLoggedIn()){
+			Route::redirectToRoot();
+		}
+		$id = $matches["id"];
+		$articles = Article::all();
+		$article = $articles[$id];
+		if(Request::getMethod() == "POST"){	
+			$article->delete();
+
+			Route::redirectToRoot();	
+		}
+		return view("delete-article.html", ['article' => $article]);
+	},
+	"/edit/(?P<id>\d+)" => function($matches){
+		if(!Session::isLoggedIn()){
+			Route::redirectToRoot();
+		}
+		$id = $matches["id"];
+		$articles = Article::all();
+		$chosenData = new stdClass();
+		$vals = Article::getDefaultValues();
+		foreach($vals as $key => $val){
+			$chosenData->$key = $val;
+		}
+		if(isset($id)){
+			$chosenData = $articles[$id];
+		}
+		return view("new-article.html", ['chosenData' => $chosenData, 'chosenId' => $id]);
 	},
 	"/new-article" => function(){
 		if(!Session::isLoggedIn()){
 			Route::redirectToRoot();
 		}
 		if(Request::getMethod() == "POST"){
-			handleNewArticle();
+			if(Session::isLoggedIn()){
+				Article::save(Request::post("data"), Request::post("chosenid"));
+			}
+			Route::redirectToRoot();
 		}
-		$articles = [];
+		$vals = Article::getDefaultValues();
+
+		return view("new-article.html", ['chosenData' => $vals, 'chosenId' => ""]);
+	},
+	"/" => function(){
+		$articles = Article::all();
 		$chosenId = "";
 		$chosenData = new stdClass();
-		$vals = ['title' => '','published' => date('Y-m-d H:i'), 'changes' => 'miniscule', 'write_time' => '0 minutes', 'content' => ''];
+		$vals = Article::getDefaultValues();
 		foreach($vals as $key => $val){
 			$chosenData->$key = $val;
 		}
-		return view("new-article", ['articles' => $articles, 'chosenData' => $chosenData, 'chosenId' => $chosenId]);
+		if(isset($_GET["edit"])){
+			$edit = Request::get("edit");
+			$chosenId = $edit;
+			$chosen = $articles[$edit];
+			$chosenData = $chosen;
+		}
+		return view("articles.html", ['articles' => $articles]);
 	},
-	"*" => "handleDefaultRoute"
+	"*" => function(){
+		http_response_code(404);
+
+		return view("errors/404.html");
+	}
 ];
-Route::handle($routes);
+echo Route::handle($routes);

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for name, article in articles %}
+        {% include("partials/article.html") %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,21 @@
+<article class="readable-width block-centered">
+	<header>
+		<h2>{{ article.get('title') }}</h2>
+		<span>Published <time>{{ article.get('published') }}</time>.</span>
+		<span>Changes since last post: {{ article.get('changes') }}.</span>
+		{% if (Session.isLoggedIn()) %}
+			<a href="/edit/{{ article.get('name') }}">Edit</a>
+		{% endif %}
+		{% if (Session.isLoggedIn()) %}
+			<a href="/delete/{{ article.get('name') }}">Delete</a>
+		{% endif %}
+	</header>
+	<div>
+		{% autoescape false %}
+			{{ article.get('content') }}
+		{% endautoescape %}
+	</div>
+	<footer>
+		<p>Time to write: {{ article.get('write_time') }}.</p>
+	</footer>
+</article>

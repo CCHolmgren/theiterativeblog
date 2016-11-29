@@ -3,6 +3,12 @@ body {
     padding-left: 1rem;
     padding-right: 1rem;
 }
+h1 a {
+    color: black;
+}
+a {
+    text-decoration: none;
+}
 p,
 li,
 dl {
@@ -48,7 +54,11 @@ input[type=submit]:hover {
     background-color: #eee;
     cursor: pointer;
 }
-
+code {
+    background-color: #e8e8e8;
+    border-radius: 2px;
+    padding: 2px 4px 2px 4px;
+}
 .text-center {
     text-align: center;
 }

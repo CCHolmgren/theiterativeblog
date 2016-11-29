@@ -11,7 +11,10 @@
 			prevent = true;	
 		}
 	});
-	document.getElementById("new-article").onsubmit = function(){
-		prevent = false;
-	}
+	var element = document.getElementById("new-article");
+		if(element){
+			element.onsubmit = function(){
+			prevent = false;
+		}
+	} 
 }())

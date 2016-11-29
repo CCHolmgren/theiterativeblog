@@ -11,7 +11,12 @@ class Article {
 	function __get($name){
 		return $this->article[$name];
 	}
-
+	function get($key){
+		return $this->article[$key];
+	}
+	static function getDefaultValues() {
+		return new static(json_encode(['title' => '','published' => date('Y-m-d H:i'), 'changes' => 'miniscule', 'write_time' => '0 minutes', 'content' => '', 'markdown' => '']));
+	}
 	static function all(){
 		$articles = [];
 		$prefix = "./articles/";
@@ -37,5 +42,8 @@ class Article {
 		extract(['article' => $this]);
 
 		include("views/partials/article.php");
+	}
+	function delete() {
+		unlink("articles/" . $this->get("name") . ".json");
 	}
 }

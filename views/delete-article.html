@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="post">
+        Title: {{ article.get("title") }}
+        <input type="submit" value="Delete this article">
+        <a href="/">Cancel</a>
+    </form>
+{% endblock content %}
